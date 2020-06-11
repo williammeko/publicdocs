@@ -75,4 +75,17 @@ QoS=2 时，MQTT 通过至少2次网络往返，来保证消息送达，且只�
 
 ![订阅](<./mqtt performance test/perftest01-03-02.jpg>)
 
+### QoS
+
+#### QoS0
+
+![QoS0](<./mqtt performance test/qos0.webp>)
+
+#### QoS1
+
+![QoS1](<./mqtt performance test/qos1.webp>)
+
+#### QoS2
+
+![QoS2](<./mqtt performance test/qos2.webp>)
 
