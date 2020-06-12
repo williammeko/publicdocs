@@ -6,18 +6,22 @@
 
 ## 测试环境
 
-阿里云MQTT新用户套餐
+- 阿里云MQTT新用户套餐
 
-![阿里云MQTT新用户套餐](<./mqtt performance test/aliyun-mqtt-price-newuser-01.jpg>)
+    ![阿里云MQTT新用户套餐](<./mqtt performance test/aliyun-mqtt-price-newuser-01.jpg>)
 
-![阿里云MQTT实例](<./mqtt performance test/aliyun-mqtt-instance-02.jpg>)
+    ![阿里云MQTT实例](<./mqtt performance test/aliyun-mqtt-instance-02.jpg>)
 
-配置信息
+- 配置信息
 
- - 服务部署区域：亚太 - 华南1 - 深圳
- - 连接数上限：100个
- - TPS上限：100t/s
- - 订阅关系数上限：1000个
+  - 服务部署区域：亚太 - 华南1 - 深圳
+  - 连接数上限：100个
+  - TPS上限：100t/s
+  - 订阅关系数上限：1000个
+
+- 使用限制
+
+    > [阿里云 MQTT 使用限制](https://help.aliyun.com/document_detail/63620.html?spm=a2c4g.11186623.2.14.17e871d7qjPHSj#concept-63620-zh)
 
 ## 用例：阿里云 / 单连接 / 单线程
 
