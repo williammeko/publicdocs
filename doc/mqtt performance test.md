@@ -27,7 +27,7 @@
 
 通过 restful api 封装 mqtt 发送，jmeter，压测
 
-### -- 压测01 --
+### -- 压测 01 --
 
 #### 参数
 
@@ -68,7 +68,7 @@ retained=false
 
     ![订阅](<./mqtt performance test/perftest01-01-03.jpg>)
 
-### -- 压测02 --
+### -- 压测 02 --
 
 #### 参数
 
@@ -102,7 +102,7 @@ retained=false
 
     ![订阅](<./mqtt performance test/perftest01-02-02.jpg>)
 
-### -- 压测03 --
+### -- 压测 03 --
 
 #### 参数
 
@@ -135,6 +135,30 @@ retained=false
 - 结果 - 订阅
 
     ![订阅](<./mqtt performance test/perftest01-03-02.jpg>)
+
+### -- 压测 04 --
+
+#### 参数
+
+- 带驱逐能力的队列（EvictingQueue - google Guava库）
+  - 固定容量36000条消息
+  - 当容量用满时，驱逐队列最前的消息，以获取空间，并把新消息加到队列最后面
+- 线程1 - 模拟 DA 往队列推数据
+  - 20 tps
+- 每条数据大小大约3000字符
+- 线程2 - 从队列取数据，并发送到MQTT
+- 网络延时：50ms
+- 网络丢包：50%
+
+#### 压测结果
+
+- 线程1发送速度，与线程2的队列速度一致，EvictingQueue队列中的消息全部及时发送
+
+    ![线程1发送速度，与线程2的队列速度一致，EvictingQueue队列中的消息全部及时发送](<./mqtt performance test/perftest01-04-01.jpg>)
+
+- 部分消息发送失败
+
+    ![线程1发送速度，与线程2的队列速度一致，EvictingQueue队列中的消息全部及时发送](<./mqtt performance test/perftest01-04-02.jpg>)
 
 ## 名词解释
 
