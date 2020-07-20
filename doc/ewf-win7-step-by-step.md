@@ -48,7 +48,7 @@ EWF for Windows 7
 
 在 Windows 7（**64位**）操作系统下安装 EWF。非 Windows 7 嵌入式版本的 win 7 要启用 EWF，首先需要安装 EWF。
 
-*P.S. [[1]](<#1-安装windows 7 x86 EWF>) 与 [[2]](<#2-安装windows 7 x64 EWF>) 的主要区别在于，一个是32位，另一个是64位的 Windows 7，只要选择期中之一安装即可*
+*P.S. [[1]](<#1-安装windows-7-x86-ewf>) 与 [[2]](<#2-安装windows-7-x64-ewf>) 的主要区别在于，一个是32位，另一个是64位的 Windows 7，只要选择期中之一安装即可*
 
 ### [3] 启用EWF
 
