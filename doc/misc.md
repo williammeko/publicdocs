@@ -45,3 +45,19 @@ $ alias mynpm='cnpm --registry=https://registry.npm.example.com \
 ```
 cnpm i --by=npm react-native
 ```
+
+## docusaurus
+
+> https://docusaurus.io/
+
+```
+npx create-docusaurus@latest docs-docusaurus classic
+cd docs-docusaurus
+npx docusaurus start --port 3030
+
+mv path/to/publicdocs ./docs/publicdocs
+mv path/to/privatedocs ./docs/privatedocs
+
+```
+
+
