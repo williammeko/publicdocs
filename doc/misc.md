@@ -53,7 +53,7 @@ cnpm i --by=npm react-native
 ```
 npx create-docusaurus@latest docs-docusaurus classic
 cd docs-docusaurus
-npx docusaurus start --port 3030
+npx docusaurus start --port 3030 --host 0.0.0.0
 
 mv path/to/publicdocs ./docs/publicdocs
 mv path/to/privatedocs ./docs/privatedocs
