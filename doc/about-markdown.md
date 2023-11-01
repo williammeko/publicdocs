@@ -16,3 +16,19 @@
 
 - 链接
 > [markdown_百度百科](https://baike.baidu.com/item/markdown)
+
+## Markdown渲染工具
+
+### linux/osx
+
+```bash
+alias madness='docker run --rm -it -v $PWD:/docs -p 3333:3000 dannyben/madness'
+madness server
+```
+
+### windows
+```shell
+vim C:\Windows\madness.cmd
+docker run --rm -it -v "%cd%:/docs" -p 3333:3000 dannyben/madness %1
+madness server
+```
