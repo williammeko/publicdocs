@@ -57,7 +57,12 @@ npx docusaurus start --port 3030 --host 0.0.0.0
 
 mv path/to/publicdocs ./docs/publicdocs
 mv path/to/privatedocs ./docs/privatedocs
-
 ```
 
+## ifconfig
+
+```shell
+sudo ifconfig en0 alias 192.168.0.200/24 up
+sudo ifconfig en0 -alias 192.168.0.200
+```
 
