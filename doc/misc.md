@@ -66,3 +66,14 @@ sudo ifconfig en0 alias 192.168.0.200/24 up
 sudo ifconfig en0 -alias 192.168.0.200
 ```
 
+## port forwarding/nat on windows
+```
+netsh interface portproxy add v4tov4 listenport=3390 listenaddress=0.0.0.0 connectport=3389 connectaddress=192.168.0.103
+netsh interface portproxy show all
+netsh interface portproxy delete v4tov4 listenport=3390 listenaddress=0.0.0.0
+```
+
+## port forwarding/nat on osx/macos
+```
+ssh -L 0.0.0.0:28080:172.16.2.58:28080 -N 127.0.0.1
+```
