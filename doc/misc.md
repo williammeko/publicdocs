@@ -77,3 +77,8 @@ netsh interface portproxy delete v4tov4 listenport=3390 listenaddress=0.0.0.0
 ```
 ssh -L 0.0.0.0:28080:172.16.2.58:28080 -N 127.0.0.1
 ```
+
+## file management - minio
+```
+alias minioserver='podman run -p 9000:9000 -p 9001:9001 -e "MINIO_ROOT_USER=hui" -e "MINIO_ROOT_PASSWORD=huihuihui" minio/minio server /Users/will/podman/data --console-address ":9001"'
+```
