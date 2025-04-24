@@ -82,3 +82,75 @@ ssh -L 0.0.0.0:28080:172.16.2.58:28080 -N 127.0.0.1
 ```
 alias minioserver='podman run -p 9000:9000 -p 9001:9001 -e "MINIO_ROOT_USER=hui" -e "MINIO_ROOT_PASSWORD=huihuihui" minio/minio server /Users/will/podman/data --console-address ":9001"'
 ```
+
+## mysql/mariadb data transferring between databases
+
+### install mysql/mysqldump command line utilities
+
+```shell
+sudo apt install mysql-client-core
+```
+
+### backup/restore whole database (skipping some tables)
+
+```shell
+echo '==== setup ================================================'
+srcHost=127.0.0.1
+tarHost=127.0.0.1
+srcDb="ecimp5-v2-template"
+tarDb="ecimp5-30"
+srcPort=3306
+tarPort=3306
+srcUser=root
+tarUser=root
+srcPass=pwd01
+tarPass=pwd01
+sqlFile=./backup-$(date +"%Y%m%d%H%M%S").sql
+#echo '==== dump src db =========================================='
+#export MYSQL_PWD="$srcPass"
+#mysqldump -h"$srcHost" -P$srcPort -u"$srcUser" --column-statistics=0 "$srcDb" > "$sqlFile"
+echo '==== dump src db (ignoring some tables) ==================='
+export MYSQL_PWD="$srcPass"
+argIgnoreTables=$(mysql -h"$srcHost" -P$srcPort -u"$srcUser" -D"$srcDb" -sNe "SHOW TABLES LIKE 'tbl_alarm_______';" | sed 's/^/ --ignore-table="'"$srcDb"'./g' | tr '\r\n' '"')$(mysql -h"$srcHost" -P$srcPort -u"$srcUser" -D"$srcDb" -sNe "SHOW TABLES LIKE 'tbl_monitor_______';" | sed 's/^/ --ignore-table="'"$srcDb"'./g' | tr '\r\n' '"')
+echo $argIgnoreTables
+cmd='mysqldump -h"'$srcHost'" -P'$srcPort' -u"'$srcUser'" --ignore-views '$argIgnoreTables' --column-statistics=0 "'$srcDb'" > "'$sqlFile'"'
+echo $cmd
+eval $cmd
+echo '==== create and restore tar db ============================'
+export MYSQL_PWD="$tarPass"
+mysql -h"$tarHost" -P$tarPort -u"$tarUser" -sNe 'DROP DATABASE IF EXISTS `'"$tarDb"'`;'
+mysql -h"$tarHost" -P$tarPort -u"$tarUser" -sNe 'CREATE DATABASE `'"$tarDb"'` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+mysql -h"$tarHost" -P$tarPort -u"$tarUser" --default-character-set=utf8mb4 --database="$tarDb" < "$sqlFile"
+echo '==== remove file backup sql file =========================='
+rm "$sqlFile"
+```
+
+### backup/restore with tables specified
+
+```shell
+echo '==== setup ================================================'
+srcTables="tbl_variable tbl_data_source tbl_motion_equipment"
+srcHost=127.0.0.1
+tarHost=127.0.0.1
+srcDb="ecimp5-v2-template"
+tarDb="ecimp5-31"
+srcPort=3306
+tarPort=3306
+srcUser=root
+tarUser=root
+srcPass=pwd01
+tarPass=pwd01
+sqlFile=./backup-$(date +"%Y%m%d%H%M%S").sql
+echo '==== dump src db (tables specified) ======================='
+export MYSQL_PWD="$srcPass"
+mysqldump -h"$srcHost" -P$srcPort -u"$srcUser" --column-statistics=0 "$srcDb" $srcTables > "$sqlFile"
+echo '==== create and restore tar db ============================'
+export MYSQL_PWD="$tarPass"
+#mysql -h"$tarHost" -P$tarPort -u"$tarUser" -sNe 'DROP DATABASE IF EXISTS `'"$tarDb"'`;'
+#mysql -h"$tarHost" -P$tarPort -u"$tarUser" -sNe 'CREATE DATABASE `'"$tarDb"'` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+mysql -h"$tarHost" -P$tarPort -u"$tarUser" --default-character-set=utf8mb4 --database="$tarDb" < "$sqlFile"
+echo '==== remove file backup sql file =========================='
+rm "$sqlFile"
+```
+
+
