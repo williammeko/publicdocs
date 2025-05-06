@@ -159,3 +159,9 @@ rm "$sqlFile"
 date '+%C%y%m%d' -d "$end_date+100 days"
 ```
 
+## view text file inside jar file without decompressing
+
+```shell
+unzip -p ecimp4.jar "$(jar tf ecimp4.jar | grep application.yml)" | cat
+```
+
