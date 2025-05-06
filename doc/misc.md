@@ -153,4 +153,9 @@ echo '==== remove file backup sql file =========================='
 rm "$sqlFile"
 ```
 
+## adding days on bash with date command
+
+```shell
+date '+%C%y%m%d' -d "$end_date+100 days"
+```
 
