@@ -165,3 +165,9 @@ date '+%C%y%m%d' -d "$end_date+100 days"
 unzip -p ecimp4.jar "$(jar tf ecimp4.jar | grep application.yml)" | cat
 ```
 
+## command line one-line metronome on osx/macos
+
+```shell
+BPM=120 && while do; printf '\a' && sleep `bc <<< "scale=4; 60/${BPM}"`; done;
+```
+
