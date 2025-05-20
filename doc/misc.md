@@ -171,3 +171,14 @@ unzip -p ecimp4.jar "$(jar tf ecimp4.jar | grep application.yml)" | cat
 BPM=120 && while do; printf '\a' && sleep `bc <<< "scale=4; 60/${BPM}"`; done;
 ```
 
+## docker mirrors
+
+```shell
+sudo vi /etc/docker/daemon.json
+
+{
+  "registry-mirrors": ["https://docker.m.daocloud.io"]
+}
+```
+
+
