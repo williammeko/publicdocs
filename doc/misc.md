@@ -87,8 +87,19 @@ alias minioserver='podman run -p 9000:9000 -p 9001:9001 -e "MINIO_ROOT_USER=hui"
 
 ### install mysql/mysqldump command line utilities
 
+#### ubuntu
+
 ```shell
 sudo apt install mysql-client-core
+```
+
+#### macos
+
+```shell
+brew install mysql-client
+brew info mysql-client
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+mysql --version
 ```
 
 ### backup/restore whole database (skipping some tables)
@@ -180,5 +191,16 @@ sudo vi /etc/docker/daemon.json
   "registry-mirrors": ["https://docker.m.daocloud.io"]
 }
 ```
+
+## homebrew mirrors/git/bottles
+
+```shell
+vi .zprofile
+
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+```
+
 
 
