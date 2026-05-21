@@ -51,3 +51,9 @@ docker save gitlab:202605210940 | gzip > ./gitlab-202605210940.tar.gz
 # restore docker image from file
 docker load -i ./gitlab-202605210940.tar.gz
 ```
+
+## docker run from image
+
+```shell
+docker run -p 7022:22 -p 7080:80 -p 7443:443 -v /Users/will/Archives/gitlab-20260520/config:/etc/gitlab -v /Users/will/Archives/gitlab-20260520/logs:/var/log/gitlab -v /Users/will/Archives/gitlab-20260520/data:/var/opt/gitlab --name gitlab -d gitlab:202605211234
+```
