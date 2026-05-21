@@ -11,4 +11,5 @@
 - [python](<./doc/python.md>)
 - [git](<./doc/git.md>)
 - [java to aliyun-docker](<./doc/java-to-aliyun-docker.md>)
+- [docker gitlab](<./doc/docker-gitlab/README.md>)
 - [misc](<./doc/misc.md>)
